@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+	.row
+		.large-6.columns
+			img(src="http://covers.openlibrary.org/b/isbn/#{book.isbn}-L.jpg")
+		.large-6.columns
+			.panel.radius
+				h4 #{book.title}
+				hr
+				- if (book.author)
+					p
+						em by #{book.author}
+				p #{book.description}
+			.row
+				.large-3.columns
+					button.button.alert.remove(data-isbn='#{book.isbn}') Remove
