@@ -1,35 +1,56 @@
 doctype 5
 html
-	head
-		title Node Bookshelf
-		link(rel='stylesheet', href='/stylesheets/foundation.min.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
-	body
-		//-navigation
-		.row
-			.large-12.columns
-				nav.top-bar
-					ul.title-area
-						li.name
-							h1
-								a(href="/") Node Bookshelf
-					section.top-bar-section
-						ul.right
-							li.has-button
-								a.small.button(href='/books/new') Add Bookshelf
-				div#alert
-					- if (typeof(error) !== "undefined")
-						div.alert-box.alert #{error.message}
-		//- main content
-		block content
-
-		//- footer
-		footer.row
-			.large-12.columns
-				.row
-					.large-6.columns
-						p Node Bookshelf Lab 2013
-					.large-6.columns
-						ul.inline-list.right
-							li
-								a(href='http://www.startupinstitute.com/') Startup Institute
+  head
+    title Node Bookshelf
+    link(rel="stylesheet", href="/stylesheets/foundation.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+  body
+    //- checking to see if page undefined
+    //-  prevents app from crashing
+    //- if it"s not passed in as variable
+    - if(typeof(page) === "undefined")
+      - var page = "";
+  
+    //- navigation
+    .row
+      .large-12.columns
+        nav.top-bar
+          ul.title-area
+            li.name
+              h1
+                a(href="/") Node Bookshelf
+            li.toggle-topbar.menu-icon
+              a(href="#")
+                span menu
+          section.top-bar-section
+            ul.title-area.right
+              li.has-button 
+                - if(page === "new" || page === "edit")
+                  a.small.button.alert(href="/") Cancel
+                - else if(page === "book")
+                  a.small.button(href="/") Go to shelf
+                - else
+                  a.small.button(href="/books/new") Add book
+        div#alert
+        - if (typeof(error) !== "undefined")
+          div.alert-box.alert #{error.message}
+    //- main content
+    block content
+    
+    //- footer
+    footer.row
+      .large-12.columns
+        hr
+        .row
+          .large-6.columns
+            p Node Bookshelf 2013
+          .large-6.columns
+            ul.inline-list.right
+              li
+                a(href="http://www.startupinstitute.com/") Startup Institute
+    
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js")
+    script(src="/javascripts/foundation.min.js")
+    script(src="/javascripts/book.js")
+    script
+      $(document).foundation();

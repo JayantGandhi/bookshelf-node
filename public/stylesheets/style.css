@@ -1,8 +1,8 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+div.book-label {
+  width: 180px;
+  font-size: 1em;
+  line-height: 1.33em;
+  height: 5.17em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
