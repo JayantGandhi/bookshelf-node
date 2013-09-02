@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  .row
+    .large-12.columns
+      //- since we submitting form with ajax, should never actually use form action
+      //- but as safety will redirect to book page if something goes horribly wrong
+      form(name="edit_book", method="get", action="/books/#{book.isbn}")
+        label ISBN
+        input(type="text", name="isbn", value="#{book.isbn}", disabled)
+        label Title
+        input(type="text", name="title", value="#{book.title}")
+        label Author
+        input(type="text", name="author", value="#{book.author}")
+        label Description
+        textarea(name="description") #{book.description}
+        input.button(type="submit", name="update_book", value="Update book")

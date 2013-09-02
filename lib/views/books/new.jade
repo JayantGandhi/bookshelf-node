@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  .row
+    .large-12.columns
+      form(name="new_book", method="post", action="/books")
+        label Title
+        input(type="text", name="title", placeholder="Async Javascript")
+        label Author
+        input(type="text", name="author", placeholder="Trevor Burnham")
+        label ISBN
+        input(type="text", name="isbn", placeholder="9781937785277")
+        label Description
+        textarea(name="description", placeholder="This book will give you a solid foundation for managing async tasks without losing your sanity in a tangle of callbacks.")
+        input.button(type="submit", name="create_book", value="Add book to shelf")
